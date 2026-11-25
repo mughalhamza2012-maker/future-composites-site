@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Future Composites · Design demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0F1B21; --dark2:#14252d; --cyan:#21BDD6; --orange:#F7941E; --teal:#00708A;
+  --text:#E8F1F4; --muted:#9FB3BC; --line:rgba(255,255,255,.08);
+  --head:"Barlow Semi Condensed",Arial Narrow,sans-serif; --body:"Source Sans 3",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:var(--text);font:18px/1.6 var(--body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+/* Carbon twill texture */
+.carbon{
+  background-color:var(--dark);
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 6px,transparent 6px 12px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.35) 0 6px,transparent 6px 12px);
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0 0 .4em;letter-spacing:.01em}
+.kicker{font:600 14px/1 var(--head);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+
+/* Nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;background:linear-gradient(rgba(15,27,33,.9),rgba(15,27,33,0));}
+nav .brand{display:flex;align-items:center;gap:10px;font:700 20px var(--head);text-decoration:none}
+nav .brand img{height:34px;width:auto}
+nav .links{display:flex;gap:22px;font:600 16px var(--head);letter-spacing:.04em}
+nav .links a{text-decoration:none;opacity:.85}
+nav .links a:hover{opacity:1;color:var(--cyan)}
+.btn{display:inline-block;padding:14px 26px;border-radius:4px;background:var(--orange);color:#111;font:700 17px var(--head);
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(247,148,30,.35)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.3)}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+#hex{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;pointer-events:none}
+.hero .wrap a{pointer-events:auto}
+.hero h1{font-size:clamp(44px,8vw,104px);font-weight:800;text-transform:uppercase;max-width:11ch}
+.hero h1 span{color:var(--cyan)}
+.hero p{max-width:560px;color:var(--muted);font-size:20px;margin:0 0 32px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.scrollhint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font:600 13px var(--head);
+  letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+/* 3D */
+.viewer{padding:110px 0;background:radial-gradient(ellipse at 70% 50%,rgba(33,189,214,.12),transparent 60%),var(--dark2)}
+.viewer .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.viewer h2{font-size:clamp(34px,5vw,60px)}
+.viewer p{color:var(--muted)}
+#rotor{width:100%;aspect-ratio:1/1;max-height:620px;cursor:grab;touch-action:pan-y}
+#rotor:active{cursor:grabbing}
+.note{font-size:14px;color:var(--muted);opacity:.8}
+
+/* Process */
+.process{padding:110px 0 60px}
+.process h2{font-size:clamp(34px,5vw,60px)}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;min-height:70vh;padding:40px 0;border-top:1px solid var(--line)}
+.step:nth-child(even) .media{order:2}
+.step .num{font:800 110px/1 var(--head);color:transparent;-webkit-text-stroke:1px rgba(33,189,214,.5)}
+.step h3{font-size:clamp(30px,4vw,46px);text-transform:uppercase}
+.step p{color:var(--muted);max-width:460px}
+.media{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.media img{width:100%;height:420px;object-fit:cover;transform:scale(1.15)}
+.media::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(15,27,33,.7))}
+.bar{height:3px;width:0;background:linear-gradient(90deg,var(--cyan),var(--orange));margin:18px 0}
+
+/* CTA */
+.cta{padding:120px 0;text-align:center;background:linear-gradient(135deg,var(--teal),#063946)}
+.cta h2{font-size:clamp(36px,6vw,72px);text-transform:uppercase}
+.cta p{color:#cfe7ec;max-width:620px;margin:0 auto 34px}
+footer{padding:28px 0;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--line)}
+
+@media (max-width:820px){
+  nav .links{display:none}
+  .viewer .grid,.step{grid-template-columns:1fr}
+  .step:nth-child(even) .media{order:0}
+  .step{min-height:auto;gap:18px}
+  .step .num{font-size:72px}
+  .media img{height:260px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html"><img src="../logo.png" alt="Future Composites logo"></a>
+  <div class="links">
+    <a href="#rotor-section">3D view</a><a href="#process">Process</a><a href="../projects.html">Projects</a><a href="../get-a-quote.html">Get a quote</a>
+  </div>
+</nav>
+
+<!-- 1 + 2: carbon theme with glowing honeycomb -->
+<header class="hero carbon">
+  <canvas id="hex" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="kicker">Composite product development &amp; manufacturing</div>
+    <h1>Bring us your <span>idea.</span> We make it real.</h1>
+    <p>Carbon fiber and glass fiber parts, developed from your design or idea and manufactured to order.</p>
+    <div class="ctas">
+      <a class="btn" href="../get-a-quote.html">Get a quote</a>
+      <a class="btn ghost" href="#process">See how we work</a>
+    </div>
+  </div>
+  <div class="scrollhint">Scroll</div>
+</header>
+
+<!-- 5: interactive 3D -->
+<section class="viewer" id="rotor-section">
+  <div class="wrap grid">
+    <div>
+      <div class="kicker">Interactive</div>
+      <h2>Spin it. Zoom it. Explore it.</h2>
+      <p>A real part can sit right here: exported from CAD, viewed in any browser and on any phone, with nothing to install.</p>
+      <p class="note">Illustrative 3D model of a helical wind rotor. Drag to rotate, scroll or pinch to zoom.</p>
+    </div>
+    <canvas id="rotor" aria-label="Interactive 3D model of a helical rotor"></canvas>
+  </div>
+</section>
+
+<!-- 7: process told by scrolling -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="kicker">From idea to part</div>
+    <h2>How a part comes to life</h2>
+    <div class="steps">
+      <article class="step">
+        <div class="media"><img src="../images/fea-blade-deflection.jpg" alt="FEA result showing blade deflection"></div>
+        <div><div class="num">01</div><h3>Design &amp; analysis</h3><div class="bar"></div>
+          <p>Your drawing or idea becomes a laminate design, checked with FEA before any material is cut.</p></div>
+      </article>
+      <article class="step">
+        <div class="media"><img src="../images/cnc-machining-mdf-master-mold.jpg" alt="CNC machining a master mold"></div>
+        <div><div class="num">02</div><h3>Tooling</h3><div class="bar"></div>
+          <p>Master patterns are CNC machined, then molds are built and finished for a clean part surface.</p></div>
+      </article>
+      <article class="step">
+        <div class="media"><img src="../images/vawt-glass-rotor-hand-layup.jpg" alt="Glass fiber rotor made by hand layup"></div>
+        <div><div class="num">03</div><h3>Layup &amp; infusion</h3><div class="bar"></div>
+          <p>Carbon or glass fabric is laid in the mold and wetted by hand layup or vacuum infusion, depending on the part.</p></div>
+      </article>
+      <article class="step">
+        <div class="media"><img src="../images/carbon-fiber-skin-trimmed.jpg" alt="Trimmed carbon fiber skin"></div>
+        <div><div class="num">04</div><h3>Trim &amp; finish</h3><div class="bar"></div>
+          <p>Cured parts are demolded, trimmed to the line and finished to your drawing.</p></div>
+      </article>
+      <article class="step">
+        <div class="media"><img src="../images/diagram-inspection.jpg" alt="Inspection diagram"></div>
+        <div><div class="num">05</div><h3>Inspect &amp; deliver</h3><div class="bar"></div>
+          <p>Each part is checked against the drawing before it is packed and shipped.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta carbon">
+  <div class="wrap">
+    <h2>Have a part in mind?</h2>
+    <p>Send your drawing, sketch or idea. Our design engineers will come back with the best way to make it.</p>
+    <a class="btn" href="../get-a-quote.html">Start your quote</a>
+  </div>
+</section>
+
+<footer>Future Composites · Design demo, not the live website</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+/* ---------- Honeycomb hero ---------- */
+(function(){
+  const c=document.getElementById('hex'),x=c.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,dpr,cells=[],mouse={x:-999,y:-999},t=0;
+  const R=34;
+  function build(){
+    dpr=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;
+    c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    cells=[];const w=Math.sqrt(3)*R,h=1.5*R;
+    for(let r=-1;r*h<H+R;r++)for(let q=-1;q*w<W+w;q++)cells.push({x:q*w+(r&1?w/2:0),y:r*h,g:0});
+  }
+  function hex(cx,cy,r){x.beginPath();for(let i=0;i<6;i++){const a=Math.PI/180*(60*i-30);x.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}x.closePath();}
+  function draw(){
+    t+=0.012;x.clearRect(0,0,W,H);
+    for(const k of cells){
+      const d=Math.hypot(k.x-mouse.x,k.y-mouse.y);
+      const wave=(Math.sin(k.x*0.008+k.y*0.006-t*2)+1)/2;
+      const target=Math.max(0,1-d/220);
+      k.g+=(target-k.g)*0.08;
+      const glow=Math.min(1,k.g+wave*0.10);
+      hex(k.x,k.y,R-3);
+      x.fillStyle=`rgba(33,189,214,${0.03+glow*0.22})`;x.fill();
+      x.strokeStyle=`rgba(33,189,214,${0.10+glow*0.65})`;x.lineWidth=1;x.stroke();
+      if(k.g>0.6){x.strokeStyle=`rgba(247,148,30,${(k.g-0.6)*1.5})`;x.stroke();}
+    }
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  addEventListener('resize',build);
+  c.parentElement.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();mouse.x=e.clientX-b.left;mouse.y=e.clientY-b.top;});
+  c.parentElement.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
+  build();draw();
+})();
+
+/* ---------- Scroll-told process ---------- */
+gsap.registerPlugin(ScrollTrigger);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.from('.hero .kicker,.hero h1,.hero p,.hero .ctas',{y:40,opacity:0,duration:1,stagger:.12,ease:'power3.out'});
+  document.querySelectorAll('.step').forEach(s=>{
+    const img=s.querySelector('img'),txt=s.querySelectorAll('.num,h3,p'),bar=s.querySelector('.bar');
+    gsap.from(txt,{y:50,opacity:0,stagger:.1,duration:.9,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 75%'}});
+    gsap.to(bar,{width:'120px',duration:1,ease:'power2.out',scrollTrigger:{trigger:s,start:'top 70%'}});
+    gsap.fromTo(img,{scale:1.25},{scale:1,ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+}
+</script>
+
+<!-- ---------- 3D rotor (three.js) ---------- -->
+<script type="module">
+import * as THREE from './vendor/three.module.min.js';
+const canvas=document.getElementById('rotor');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,1,0.1,100);
+let dist=7.5;
+scene.add(new THREE.HemisphereLight(0xcfefff,0x0f1b21,1.1));
+const key=new THREE.DirectionalLight(0xffffff,2.2);key.position.set(4,6,5);scene.add(key);
+const rim=new THREE.DirectionalLight(0x21bdd6,2.5);rim.position.set(-5,2,-4);scene.add(rim);
+const warm=new THREE.PointLight(0xf7941e,18,12);warm.position.set(3,-2,3);scene.add(warm);
+
+const rotor=new THREE.Group();scene.add(rotor);
+const H=3.6, r=0.62, off=0.5, twist=Math.PI; // helical Savonius-style rotor
+const bladeMat=new THREE.MeshPhysicalMaterial({color:0x1f7fe0,roughness:.22,metalness:.05,clearcoat:1,clearcoatRoughness:.1,side:THREE.DoubleSide});
+function blade(sign){
+  const U=48,V=80,pos=[],idx=[];
+  for(let j=0;j<=V;j++){const v=j/V,y=(v-.5)*H,tw=v*twist;
+    for(let i=0;i<=U;i++){const a=Math.PI*i/U;
+      // semicircular cup centred at (sign*off,0)
+      let px=sign*off+r*Math.cos(a)*sign, pz=r*Math.sin(a)*sign;
+      const cx=px*Math.cos(tw)-pz*Math.sin(tw), cz=px*Math.sin(tw)+pz*Math.cos(tw);
+      pos.push(cx,y,cz);}}
+  for(let j=0;j<V;j++)for(let i=0;i<U;i++){const a=j*(U+1)+i,b=a+U+1;idx.push(a,b,a+1,b,b+1,a+1);}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(idx);g.computeVertexNormals();
+  return new THREE.Mesh(g,bladeMat);
+}
+rotor.add(blade(1),blade(-1));
+const plateMat=new THREE.MeshPhysicalMaterial({color:0x22313a,roughness:.35,metalness:.6,clearcoat:.6});
+for(const y of [-H/2,H/2]){const p=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.25,0.05,72),plateMat);p.position.y=y;rotor.add(p);}
+const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,H+1.4,24),new THREE.MeshStandardMaterial({color:0xb8c4ca,metalness:.9,roughness:.25}));rotor.add(shaft);
+rotor.rotation.x=0.18;
+
+// drag to rotate, wheel/pinch to zoom
+let dragging=false,lx=0,ly=0,vy=0.006,rx=0.18;
+canvas.addEventListener('pointerdown',e=>{dragging=true;lx=e.clientX;ly=e.clientY;canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
+  rotor.rotation.y+=dx*0.01;vy=dx*0.0015;rx=Math.max(-0.8,Math.min(0.8,rx+dy*0.005));});
+canvas.addEventListener('pointerup',()=>{dragging=false;});
+canvas.addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(4.5,Math.min(12,dist+e.deltaY*0.004));},{passive:false});
+let pinch=0;
+canvas.addEventListener('touchmove',e=>{if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(pinch)dist=Math.max(4.5,Math.min(12,dist-(d-pinch)*0.02));pinch=d;e.preventDefault();}},{passive:false});
+canvas.addEventListener('touchend',()=>pinch=0);
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(canvas.width!==Math.floor(w*renderer.getPixelRatio())||canvas.height!==Math.floor(h*renderer.getPixelRatio())){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function loop(){resize();
+  if(!dragging){rotor.rotation.y+=reduce?0:vy;vy+=(0.006-vy)*0.02;}
+  rotor.rotation.x+=(rx-rotor.rotation.x)*0.1;
+  camera.position.set(0,0.6,dist);camera.lookAt(0,0,0);
+  renderer.render(scene,camera);requestAnimationFrame(loop);}
+loop();
+</script>
+</body>
+</html>
