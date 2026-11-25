@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Future Composites · Website styles</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0F1B21;color:#E8F1F4;font:18px/1.6 "Source Sans 3",Arial,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:60px 24px}
+h1{font:800 clamp(40px,6vw,72px)/1 "Barlow Semi Condensed",Arial Narrow,sans-serif;text-transform:uppercase;margin:0 0 10px}
+h1 span{color:#21BDD6}
+p.lead{color:#9FB3BC;margin:0 0 40px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+a.card{display:block;text-decoration:none;color:inherit;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);transition:transform .25s,border-color .25s}
+a.card:hover{transform:translateY(-4px);border-color:#F7941E}
+.sw{height:150px;display:flex;align-items:flex-end;padding:16px;font:800 30px "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.s1{background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px,transparent 6px 12px),#0F1B21;color:#21BDD6;border-bottom:3px solid #21BDD6}
+.s2{background:linear-gradient(rgba(0,112,138,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,112,138,.12) 1px,transparent 1px),#F3F7F9;background-size:24px 24px;color:#0F1B21}
+.s3{background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.6)),url(../images/spiral-wind-turbine-rotor.jpg) center/cover;color:#fff}
+.s4{background:radial-gradient(circle at 20% 20%,#21BDD6,transparent 50%),radial-gradient(circle at 90% 90%,#F7941E,transparent 45%),#06222B;color:#fff}
+.info{padding:18px;background:#14252d}
+.info h2{font:700 22px "Barlow Semi Condensed",sans-serif;margin:0 0 4px}
+.info p{margin:0;color:#9FB3BC;font-size:16px}
+footer{color:#9FB3BC;font-size:14px;margin-top:40px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<h1>Pick a <span>style</span></h1>
+<p class="lead">Four design directions for the Future Composites website. Open each one on your phone and computer.</p>
+<div class="grid">
+  <a class="card" href="index.html"><div class="sw s1">1 · Carbon</div><div class="info"><h2>Dark carbon + 3D</h2><p>Carbon-weave dark theme, glowing honeycomb, a 3D rotor you can spin, and a process that unfolds as you scroll.</p></div></a>
+  <a class="card" href="blueprint.html"><div class="sw s2">2 · Blueprint</div><div class="info"><h2>Light technical</h2><p>Engineering-paper grid, a drawing that draws itself, capability sheets, and a mold-versus-part slider.</p></div></a>
+  <a class="card" href="editorial.html"><div class="sw s3">3 · Editorial</div><div class="info"><h2>Big photos, magazine feel</h2><p>Full-screen photo opening, scrolling keyword band, and a project gallery you can filter by industry.</p></div></a>
+  <a class="card" href="glass.html"><div class="sw s4">4 · Glass</div><div class="info"><h2>Modern glass + picker</h2><p>Frosted-glass cards over moving color, and an interactive material picker for carbon, glass or hybrid.</p></div></a>
+</div>
+<footer>Design demos only. Not the live website. <a href="../index.html" style="color:inherit">Full site preview</a></footer>
+</div></body>
+</html>
