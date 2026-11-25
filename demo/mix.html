@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Future Composites · Mixed style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0F1B21;--dark2:#14252d;--deep:#06222B;--cyan:#21BDD6;--orange:#F7941E;--teal:#00708A;
+--text:#E8F1F4;--muted:#9FB3BC;--paper:#F3F7F9;--cream:#F6F2EC;--ink:#111A1F;--inkmuted:#56686F;
+--head:"Barlow Semi Condensed",Arial Narrow,sans-serif;--body:"Source Sans 3",Arial,sans-serif;--mono:"JetBrains Mono",Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:var(--text);font:18px/1.6 var(--body);overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--head);line-height:1.02;margin:0 0 .4em}
+.kicker{font:600 14px/1 var(--head);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.tag{font:600 13px var(--mono);letter-spacing:.08em;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+.big{font-size:clamp(38px,6vw,78px);font-weight:800;text-transform:uppercase}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--orange),#ffb35c);color:#1b1306;font:700 16px var(--head);letter-spacing:.07em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 30px rgba(247,148,30,.3);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.35);box-shadow:none}
+.carbon{background-color:var(--dark);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 6px,transparent 6px 12px),repeating-linear-gradient(-45deg,rgba(0,0,0,.35) 0 6px,transparent 6px 12px)}
+.glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:20px;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:0 20px 50px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15)}
+
+/* Glass nav (style 4) */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:30;width:min(1180px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:10px 18px}
+nav img{height:38px;background:#fff;padding:3px 9px;border-radius:8px}
+nav .links{display:flex;gap:22px;font:600 16px var(--head);letter-spacing:.04em}
+nav .links a{text-decoration:none;opacity:.9}nav .links a:hover{color:var(--cyan)}
+
+/* Hero: carbon + honeycomb (1) with editorial type (3) */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:12vh}
+#hex{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;pointer-events:none;width:100%}
+.hero .wrap a{pointer-events:auto}
+.hero h1{font-size:clamp(56px,11vw,160px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.92}
+.hero h1 span{background:linear-gradient(90deg,var(--cyan),#9ff0ff,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;color:var(--muted);font-size:21px;margin:10px 0 30px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* Marquee (3) */
+.marquee{background:var(--orange);color:var(--ink);overflow:hidden;white-space:nowrap;padding:16px 0;font:800 26px var(--head);text-transform:uppercase;letter-spacing:.04em}
+.marquee span{display:inline-block;animation:mq 30s linear infinite;padding-left:100%}
+.marquee b{margin:0 22px}
+@keyframes mq{to{transform:translateX(-100%)}}
+
+/* Blueprint (2) */
+.paper{color:var(--ink);background-color:var(--paper);
+ background-image:linear-gradient(rgba(0,112,138,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,112,138,.08) 1px,transparent 1px),linear-gradient(rgba(0,112,138,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,112,138,.04) 1px,transparent 1px);
+ background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+.bp{padding-block:110px}
+.bp .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.bp p{color:var(--inkmuted)}
+svg.draw{width:100%;height:auto;overflow:visible}
+svg.draw .p{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+svg.draw .t{stroke:var(--teal)}svg.draw .d{stroke:var(--orange);stroke-width:1.2}svg.draw .c{stroke:rgba(15,27,33,.35);stroke-width:1;stroke-dasharray:10 5 2 5}
+svg.draw text{font:13px var(--mono);fill:var(--inkmuted);opacity:0;transition:opacity .8s 2s}
+svg.draw .anim{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+svg.draw.go .anim{animation:draw 2.4s ease forwards}svg.draw.go text{opacity:1}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sheet{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--ink);background:#fff;margin-top:60px}
+.sheet>div{padding:26px;border-right:1px solid rgba(15,27,33,.2)}.sheet>div:last-child{border-right:0}
+.sheet .no{font:600 13px var(--mono);color:var(--orange)}
+.sheet h3{font-size:28px;text-transform:uppercase;margin-top:6px}
+.sheet ul{list-style:none;padding:0;margin:0;font:15px var(--mono);color:var(--inkmuted)}
+.sheet li{padding:7px 0;border-top:1px dashed rgba(15,27,33,.2)}.sheet li::before{content:"→ ";color:var(--teal)}
+
+/* 3D (1) */
+.viewer{padding-block:110px;background:radial-gradient(ellipse at 70% 50%,rgba(33,189,214,.14),transparent 60%),var(--dark2)}
+.viewer .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.viewer p{color:var(--muted)}
+#rotor{width:100%;aspect-ratio:1/1;max-height:600px;cursor:grab;touch-action:pan-y}
+.note{font-size:14px;color:var(--muted);opacity:.85}
+
+/* Process (1) */
+.process{padding-block:100px 40px}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:50px 0;border-top:1px solid rgba(255,255,255,.08)}
+.step:nth-child(even) .media{order:2}
+.num{font:800 100px/1 var(--head);color:transparent;-webkit-text-stroke:1px rgba(33,189,214,.55)}
+.step h3{font-size:clamp(30px,4vw,44px);text-transform:uppercase}
+.step p{color:var(--muted);max-width:460px}
+.media{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.media img{width:100%;height:400px;object-fit:cover;transform:scale(1.15)}
+.bar{height:3px;width:0;background:linear-gradient(90deg,var(--cyan),var(--orange));margin:16px 0}
+
+/* Slider (2) */
+.compare{padding-block:100px}
+.ba{position:relative;max-width:920px;aspect-ratio:16/10;margin:30px auto 0;border:1.5px solid var(--ink);overflow:hidden;user-select:none;touch-action:pan-y;background:#ddd}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px var(--ink)}
+.ba .handle::after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font:700 20px var(--head);color:var(--ink);border:2px solid var(--ink)}
+.ba .lab{position:absolute;bottom:12px;padding:4px 10px;background:var(--ink);color:#fff;font:12px var(--mono)}
+.ba .l1{left:12px}.ba .l2{right:12px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+
+/* Gallery (3) */
+.work{background:var(--cream);color:var(--ink);padding-block:100px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:8px 18px;font:600 15px var(--head);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.chip.on,.chip:hover{background:var(--ink);color:var(--cream)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px}
+.tile{position:relative;overflow:hidden;cursor:zoom-in;background:#ddd;margin:0}
+.tile.bigt{grid-column:span 2;grid-row:span 2}.tile.tall{grid-row:span 2}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.tile:hover img{transform:scale(1.07)}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font:600 16px var(--head);letter-spacing:.04em;text-transform:uppercase}
+.tile.hide{display:none}
+.lb{position:fixed;inset:0;background:rgba(10,14,16,.94);display:none;place-items:center;z-index:60;padding:24px;cursor:zoom-out}
+.lb.on{display:grid}.lb img{max-height:86vh;max-width:92vw;object-fit:contain}
+.lb p{color:#fff;font:600 18px var(--head);text-transform:uppercase;text-align:center;margin-top:12px}
+
+/* Picker (4) */
+.picker{position:relative;overflow:hidden;padding-block:110px;background:radial-gradient(ellipse at top,#0a3b47,var(--deep) 70%)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:float 16s ease-in-out infinite alternate;pointer-events:none}
+.b1{width:480px;height:480px;background:var(--cyan);top:-140px;left:-140px}
+.b2{width:420px;height:420px;background:var(--orange);bottom:-160px;right:-100px;opacity:.32;animation-delay:-6s}
+@keyframes float{to{transform:translate(70px,50px) scale(1.15)}}
+.picker .wrap{position:relative}
+.picker .sub{color:var(--muted);max-width:640px;margin:0 0 30px}
+.panel{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}
+.panel>div{padding:28px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:var(--text);border-radius:999px;padding:10px 18px;font:600 16px var(--head);cursor:pointer;transition:.2s}
+.opt.on{background:var(--cyan);color:#05242c;border-color:var(--cyan);box-shadow:0 0 24px rgba(33,189,214,.5)}
+.res h3{font-size:34px}.res h3 span{color:var(--orange)}
+.row{display:grid;grid-template-columns:80px 1fr 40px;align-items:center;gap:12px;margin:14px 0;font:600 17px var(--head)}
+.track{height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--teal),var(--cyan));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.row.win .fill{background:linear-gradient(90deg,var(--orange),#ffc37a)}
+.why{color:var(--muted);font-size:16px;min-height:52px}
+.small{font-size:14px;color:var(--muted);margin-top:16px}
+
+/* CTA (3 + 1) */
+.cta{padding-block:120px;background:linear-gradient(135deg,var(--teal),#063946)}
+.cta blockquote{margin:0 0 34px;font:800 clamp(34px,5.5vw,72px)/1.04 var(--head);text-transform:uppercase;max-width:1000px}
+.cta blockquote span{color:var(--orange)}
+footer{padding:26px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media(max-width:860px){
+ nav .links{display:none}
+ .bp .grid,.viewer .grid,.step,.panel,.sheet{grid-template-columns:1fr}
+ .sheet>div{border-right:0;border-bottom:1px solid rgba(15,27,33,.2)}
+ .step:nth-child(even) .media{order:0}.step{gap:16px;padding:34px 0}.num{font-size:68px}.media img{height:250px}
+ .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+ .bp,.viewer,.compare,.work,.picker,.cta{padding-block:70px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee span,.blob{animation:none}svg.draw .anim{stroke-dashoffset:0}svg.draw text{opacity:1}}
+</style>
+</head>
+<body>
+
+<nav class="glass"><a href="../index.html"><img src="../logo.png" alt="Future Composites logo"></a>
+<div class="links"><a href="#drawing">How we work</a><a href="#work">Work</a><a href="#picker">Materials</a><a href="../get-a-quote.html">Get a quote</a></div></nav>
+
+<!-- 1 + 3: carbon honeycomb hero with editorial type -->
+<header class="hero carbon">
+  <canvas id="hex" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="kicker">Composite product development &amp; manufacturing</div>
+    <h1>Made in<br><span>fiber.</span></h1>
+    <p>Bring us your design or your idea. We develop it into a product and manufacture it in carbon or glass fiber.</p>
+    <div class="ctas"><a class="btn" href="../get-a-quote.html">Get a quote</a><a class="btn ghost" href="#drawing">See how we work</a></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><span>Carbon fiber<b>●</b>Glass fiber<b>●</b>Vacuum infusion<b>●</b>Mold making<b>●</b>CNC machining<b>●</b>Product development<b>●</b>Carbon fiber<b>●</b>Glass fiber<b>●</b>Vacuum infusion<b>●</b>Mold making</span></div>
+
+<!-- 2: blueprint drawing + capability sheet -->
+<section class="paper bp" id="drawing"><div class="wrap">
+  <div class="grid">
+    <div>
+      <div class="tag">DWG-001 · From drawing to part</div>
+      <h2 class="big">Your drawing is our starting point.</h2>
+      <p>Send a CAD file, a sketch or just an idea. Our design engineers work out the laminate, the tooling and the best way to make it.</p>
+    </div>
+    <svg class="draw" id="draw" viewBox="0 0 560 520" aria-label="Technical drawing of a helical rotor">
+      <line class="p c anim" x1="280" y1="20" x2="280" y2="500"/>
+      <rect class="p anim" x="140" y="60" width="280" height="10"/>
+      <rect class="p anim" x="140" y="440" width="280" height="10"/>
+      <path class="p t anim" style="animation-delay:.3s" d="M160 70 C 160 170, 400 170, 400 255 S 160 340, 160 440"/>
+      <path class="p t anim" style="animation-delay:.5s" d="M400 70 C 400 170, 160 170, 160 255 S 400 340, 400 440"/>
+      <path class="p anim" style="animation-delay:.7s" d="M220 70 C 220 160, 360 180, 360 255 S 220 350, 220 440"/>
+      <path class="p anim" style="animation-delay:.9s" d="M340 70 C 340 160, 200 180, 200 255 S 340 350, 340 440"/>
+      <line class="p d anim" style="animation-delay:1.4s" x1="470" y1="65" x2="470" y2="445"/>
+      <line class="p d anim" style="animation-delay:1.4s" x1="455" y1="65" x2="485" y2="65"/>
+      <line class="p d anim" style="animation-delay:1.4s" x1="455" y1="445" x2="485" y2="445"/>
+      <line class="p d anim" style="animation-delay:1.6s" x1="140" y1="485" x2="420" y2="485"/>
+      <line class="p d anim" style="animation-delay:1.6s" x1="140" y1="475" x2="140" y2="495"/>
+      <line class="p d anim" style="animation-delay:1.6s" x1="420" y1="475" x2="420" y2="495"/>
+      <text x="482" y="260" transform="rotate(90 482 260)">H · to your spec</text>
+      <text x="236" y="512">Ø · to your spec</text>
+      <text x="20" y="22">HELICAL ROTOR · ILLUSTRATIVE</text>
+      <text x="20" y="42">GLASS FIBER · VACUUM INFUSION</text>
+    </svg>
+  </div>
+  <div class="sheet">
+    <div><div class="no">01</div><h3>Materials</h3><ul><li>Carbon fiber</li><li>Glass fiber</li><li>Hybrid laminates</li><li>Foam and honeycomb cores</li></ul></div>
+    <div><div class="no">02</div><h3>Processes</h3><ul><li>Hand layup</li><li>Vacuum infusion</li><li>Light RTM</li><li>Vacuum-bag cure</li></ul></div>
+    <div><div class="no">03</div><h3>Engineering</h3><ul><li>Laminate design</li><li>FEA checks</li><li>Pattern and mold making</li><li>3-axis CNC machining</li></ul></div>
+  </div>
+</div></section>
+
+<!-- 1: 3D rotor -->
+<section class="viewer"><div class="wrap grid">
+  <div>
+    <div class="kicker">Interactive</div>
+    <h2 class="big">Spin it. Zoom it.</h2>
+    <p>Real parts can sit right here: exported from CAD and viewed in any browser or phone, with nothing to install.</p>
+    <p class="note">Illustrative 3D model of a helical wind rotor. Drag to rotate, scroll or pinch to zoom.</p>
+  </div>
+  <canvas id="rotor" aria-label="Interactive 3D model of a helical rotor"></canvas>
+</div></section>
+
+<!-- 1: scroll-told process -->
+<section class="process carbon" id="process"><div class="wrap">
+  <div class="kicker">From idea to part</div>
+  <h2 class="big">How a part comes to life</h2>
+  <div class="steps">
+    <article class="step"><div class="media"><img src="../images/fea-blade-deflection.jpg" alt="FEA result showing blade deflection"></div>
+      <div><div class="num">01</div><h3>Design &amp; analysis</h3><div class="bar"></div><p>Your drawing or idea becomes a laminate design, checked with FEA before any material is cut.</p></div></article>
+    <article class="step"><div class="media"><img src="../images/cnc-machining-mdf-master-mold.jpg" alt="CNC machining a master pattern"></div>
+      <div><div class="num">02</div><h3>Tooling</h3><div class="bar"></div><p>Master patterns are CNC machined, then molds are built and finished for a clean part surface.</p></div></article>
+    <article class="step"><div class="media"><img src="../images/vawt-glass-rotor-hand-layup.jpg" alt="Glass fiber rotor made by hand layup"></div>
+      <div><div class="num">03</div><h3>Layup &amp; infusion</h3><div class="bar"></div><p>Carbon or glass fabric is laid in the mold and wetted by hand layup or vacuum infusion, depending on the part.</p></div></article>
+    <article class="step"><div class="media"><img src="../images/carbon-fiber-skin-trimmed.jpg" alt="Trimmed carbon fiber skin"></div>
+      <div><div class="num">04</div><h3>Trim, inspect, deliver</h3><div class="bar"></div><p>Cured parts are trimmed, finished and checked against your drawing before they ship.</p></div></article>
+  </div>
+</div></section>
+
+<!-- 2: mold vs part slider -->
+<section class="paper compare"><div class="wrap">
+  <div class="tag">SHEET 03 · Tooling</div>
+  <h2 class="big">The mold, then the part</h2>
+  <div class="ba" id="ba">
+    <img src="../images/carbon-fiber-skin-part.jpg" alt="Finished carbon fiber skin part">
+    <img class="topimg" src="../images/mold-carbon-skin-gloss.jpg" alt="Gloss mold for the carbon skin" style="clip-path:inset(0 50% 0 0)">
+    <div class="handle"></div><span class="lab l1">MOLD</span><span class="lab l2">PART</span>
+    <input type="range" min="0" max="100" value="50" aria-label="Compare mold and part">
+  </div>
+</div></section>
+
+<!-- 3: filtered gallery -->
+<section class="work" id="work"><div class="wrap">
+  <h2 class="big">Selected work</h2>
+  <div class="chips" role="group" aria-label="Filter by industry">
+    <button class="chip on" data-f="all">All</button><button class="chip" data-f="wind">Wind energy</button><button class="chip" data-f="sport">Sports</button><button class="chip" data-f="mobility">Mobility</button><button class="chip" data-f="tooling">Tooling</button>
+  </div>
+  <div class="gal">
+    <figure class="tile bigt" data-c="wind"><img src="../images/spiral-wind-turbine-rotor.jpg" alt="Spiral wind rotor"><figcaption>Spiral wind rotor</figcaption></figure>
+    <figure class="tile tall" data-c="mobility"><img src="../images/ev-bike-body-shell-lrtm.jpg" alt="EV bike body shell"><figcaption>EV bike body shell</figcaption></figure>
+    <figure class="tile" data-c="sport"><img src="../images/carbon-hockey-sticks-colors.jpg" alt="Carbon hockey sticks"><figcaption>Carbon hockey sticks</figcaption></figure>
+    <figure class="tile" data-c="wind"><img src="../images/infused-glass-spiral-blade.jpg" alt="Infused glass spiral blade"><figcaption>Infused spiral blade</figcaption></figure>
+    <figure class="tile tall" data-c="tooling"><img src="../images/mold-carbon-skin-gloss.jpg" alt="Gloss mold"><figcaption>Gloss skin mold</figcaption></figure>
+    <figure class="tile" data-c="wind"><img src="../images/vawt-helical-rotor-frame.jpg" alt="Rotor in frame"><figcaption>Rotor on test frame</figcaption></figure>
+    <figure class="tile" data-c="tooling"><img src="../images/cnc-machining-mdf-master-mold.jpg" alt="CNC master pattern"><figcaption>CNC master pattern</figcaption></figure>
+    <figure class="tile" data-c="wind"><img src="../images/vawt-helical-rotor.jpg" alt="Helical rotor"><figcaption>Helical rotor</figcaption></figure>
+    <figure class="tile" data-c="tooling"><img src="../images/mold-long-skin-tooling.jpg" alt="Long skin tooling"><figcaption>Long skin tooling</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- 4: glass material picker -->
+<section class="picker" id="picker">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div class="kicker">Material picker</div>
+    <h2 class="big">What matters most for your part?</h2>
+    <p class="sub">Pick one or more. Our design engineers advise on the material, then we supply it or build the part for you.</p>
+    <div class="panel">
+      <div class="glass">
+        <div class="opts">
+          <button class="opt on" data-k="light">Lightest weight</button><button class="opt" data-k="stiff">Highest stiffness</button><button class="opt" data-k="cost">Lowest cost</button><button class="opt" data-k="impact">Impact tough</button><button class="opt" data-k="insul">Electrically insulating</button><button class="opt" data-k="outdoor">Outdoors / weather</button><button class="opt" data-k="look">Premium look</button>
+        </div>
+        <p class="small">Guidance only. Our design engineers confirm the right laminate for your part.</p>
+      </div>
+      <div class="glass res"><h3>Best fit: <span id="best">Carbon fiber</span></h3><div id="rows"></div><p class="why" id="why"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta"><div class="wrap">
+  <blockquote>Your drawing, <span>our workshop,</span> one finished part.</blockquote>
+  <a class="btn" href="../get-a-quote.html">Start your project</a>
+</div></section>
+<footer>Future Composites · Mixed style · design demo · <a href="styles.html">all styles</a></footer>
+
+<div class="lb" id="lb" role="dialog" aria-label="Photo"><div><img alt=""><p></p></div></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* honeycomb */
+(function(){const c=document.getElementById('hex'),x=c.getContext('2d');let W,H,cells=[],m={x:-999,y:-999},t=0;const R=34;
+function build(){const d=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);cells=[];const w=Math.sqrt(3)*R,h=1.5*R;for(let r=-1;r*h<H+R;r++)for(let q=-1;q*w<W+w;q++)cells.push({x:q*w+(r&1?w/2:0),y:r*h,g:0});}
+function hex(cx,cy,r){x.beginPath();for(let i=0;i<6;i++){const a=Math.PI/180*(60*i-30);x.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}x.closePath();}
+function draw(){t+=.012;x.clearRect(0,0,W,H);for(const k of cells){const d=Math.hypot(k.x-m.x,k.y-m.y),wave=(Math.sin(k.x*.008+k.y*.006-t*2)+1)/2;k.g+=(Math.max(0,1-d/220)-k.g)*.08;const g=Math.min(1,k.g+wave*.1);hex(k.x,k.y,R-3);x.fillStyle=`rgba(33,189,214,${.03+g*.22})`;x.fill();x.strokeStyle=`rgba(33,189,214,${.1+g*.65})`;x.lineWidth=1;x.stroke();if(k.g>.6){x.strokeStyle=`rgba(247,148,30,${(k.g-.6)*1.5})`;x.stroke();}}if(!reduce)requestAnimationFrame(draw);}
+addEventListener('resize',build);c.parentElement.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();m.x=e.clientX-b.left;m.y=e.clientY-b.top});c.parentElement.addEventListener('pointerleave',()=>{m.x=m.y=-999});build();draw();})();
+
+/* blueprint: draw when scrolled into view */
+const dr=document.getElementById('draw');
+dr.querySelectorAll('.anim').forEach(el=>{if(el.getTotalLength)el.style.setProperty('--len',Math.ceil(el.getTotalLength()))});
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){dr.classList.add('go');o.disconnect()}}),{threshold:.3}).observe(dr);
+
+/* slider */
+const ba=document.getElementById('ba'),topImg=ba.querySelector('.topimg'),hd=ba.querySelector('.handle');
+ba.querySelector('input').addEventListener('input',e=>{const v=e.target.value;topImg.style.clipPath=`inset(0 ${100-v}% 0 0)`;hd.style.left=v+'%'});
+
+/* gallery */
+const tiles=[...document.querySelectorAll('.tile')];
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(z=>z.classList.toggle('on',z===c));tiles.forEach(t=>t.classList.toggle('hide',c.dataset.f!=='all'&&t.dataset.c!==c.dataset.f))}));
+const lb=document.getElementById('lb');
+tiles.forEach(t=>t.addEventListener('click',()=>{lb.querySelector('img').src=t.querySelector('img').src;lb.querySelector('p').textContent=t.querySelector('figcaption').textContent;lb.classList.add('on')}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+
+/* picker */
+const M={carbon:{name:'Carbon fiber',s:{light:3,stiff:3,cost:1,impact:1,insul:0,outdoor:2,look:3},why:'Carbon gives the most stiffness for the least weight and the classic carbon look.'},
+glass:{name:'Glass fiber',s:{light:1,stiff:1,cost:3,impact:2,insul:3,outdoor:3,look:1},why:'Glass is tough, does not conduct electricity, handles weather well and costs far less.'},
+hybrid:{name:'Hybrid',s:{light:2,stiff:2,cost:2,impact:3,insul:1,outdoor:2,look:2},why:'A hybrid puts carbon where stiffness matters and glass elsewhere, balancing weight, toughness and cost.'}};
+const rows=document.getElementById('rows');
+rows.innerHTML=Object.entries(M).map(([k,v])=>`<div class="row" id="r-${k}"><span>${v.name.split(' ')[0]}</span><div class="track"><div class="fill"></div></div><span class="pct">0</span></div>`).join('');
+function upd(){const ks=[...document.querySelectorAll('.opt.on')].map(b=>b.dataset.k),sc={};let best='carbon';for(const k in M){sc[k]=ks.length?ks.reduce((a,q)=>a+M[k].s[q],0)/(3*ks.length):0;if(sc[k]>sc[best])best=k}
+for(const k in M){const r=document.getElementById('r-'+k);r.querySelector('.fill').style.width=Math.round(sc[k]*100)+'%';r.querySelector('.pct').textContent=Math.round(sc[k]*100);r.classList.toggle('win',k===best&&ks.length>0)}
+document.getElementById('best').textContent=ks.length?M[best].name:'pick a need';document.getElementById('why').textContent=ks.length?M[best].why:''}
+document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('on');upd()}));upd();
+
+/* scroll animations */
+gsap.registerPlugin(ScrollTrigger);
+if(!reduce){
+ gsap.from('.hero .kicker,.hero h1,.hero p,.hero .ctas',{y:40,opacity:0,duration:1,stagger:.12,ease:'power3.out'});
+ document.querySelectorAll('.step').forEach(s=>{
+  gsap.from(s.querySelectorAll('.num,h3,p'),{y:50,opacity:0,stagger:.1,duration:.9,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 75%'}});
+  gsap.to(s.querySelector('.bar'),{width:'120px',duration:1,ease:'power2.out',scrollTrigger:{trigger:s,start:'top 70%'}});
+  gsap.fromTo(s.querySelector('img'),{scale:1.25},{scale:1,ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'bottom top',scrub:true}});
+ });
+ gsap.utils.toArray('.big').forEach(h=>gsap.from(h,{y:40,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:h,start:'top 85%'}}));
+}
+</script>
+
+<script type="module">
+import * as THREE from './vendor/three.module.min.js';
+const canvas=document.getElementById('rotor');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,.1,100);let dist=7.5;
+scene.add(new THREE.HemisphereLight(0xcfefff,0x0f1b21,1.1));
+const key=new THREE.DirectionalLight(0xffffff,2.2);key.position.set(4,6,5);scene.add(key);
+const rim=new THREE.DirectionalLight(0x21bdd6,2.5);rim.position.set(-5,2,-4);scene.add(rim);
+const warm=new THREE.PointLight(0xf7941e,18,12);warm.position.set(3,-2,3);scene.add(warm);
+const rotor=new THREE.Group();scene.add(rotor);
+const H=3.6,r=.62,off=.5,tw=Math.PI;
+const mat=new THREE.MeshPhysicalMaterial({color:0x1f7fe0,roughness:.22,metalness:.05,clearcoat:1,clearcoatRoughness:.1,side:THREE.DoubleSide});
+function blade(s){const U=48,V=80,p=[],idx=[];for(let j=0;j<=V;j++){const v=j/V,y=(v-.5)*H,a0=v*tw;for(let i=0;i<=U;i++){const a=Math.PI*i/U;const px=s*off+r*Math.cos(a)*s,pz=r*Math.sin(a)*s;p.push(px*Math.cos(a0)-pz*Math.sin(a0),y,px*Math.sin(a0)+pz*Math.cos(a0));}}
+for(let j=0;j<V;j++)for(let i=0;i<U;i++){const a=j*(U+1)+i,b=a+U+1;idx.push(a,b,a+1,b,b+1,a+1);}
+const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setIndex(idx);g.computeVertexNormals();return new THREE.Mesh(g,mat);}
+rotor.add(blade(1),blade(-1));
+const pm=new THREE.MeshPhysicalMaterial({color:0x22313a,roughness:.35,metalness:.6,clearcoat:.6});
+for(const y of [-H/2,H/2]){const p=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.25,.05,72),pm);p.position.y=y;rotor.add(p);}
+rotor.add(new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,H+1.4,24),new THREE.MeshStandardMaterial({color:0xb8c4ca,metalness:.9,roughness:.25})));
+let drag=false,lx=0,ly=0,vy=.006,rx=.18;rotor.rotation.x=.18;
+canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;canvas.setPointerCapture(e.pointerId)});
+canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;rotor.rotation.y+=dx*.01;vy=dx*.0015;rx=Math.max(-.8,Math.min(.8,rx+dy*.005))});
+canvas.addEventListener('pointerup',()=>drag=false);
+canvas.addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(4.5,Math.min(12,dist+e.deltaY*.004))},{passive:false});
+let pinch=0;canvas.addEventListener('touchmove',e=>{if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(pinch)dist=Math.max(4.5,Math.min(12,dist-(d-pinch)*.02));pinch=d;e.preventDefault()}},{passive:false});
+canvas.addEventListener('touchend',()=>pinch=0);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight,pr=renderer.getPixelRatio();if(canvas.width!==Math.floor(w*pr)||canvas.height!==Math.floor(h*pr)){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}}
+(function loop(){resize();if(!drag){rotor.rotation.y+=reduce?0:vy;vy+=(.006-vy)*.02}rotor.rotation.x+=(rx-rotor.rotation.x)*.1;camera.position.set(0,.6,dist);camera.lookAt(0,0,0);renderer.render(scene,camera);requestAnimationFrame(loop)})();
+</script>
+</body>
+</html>
