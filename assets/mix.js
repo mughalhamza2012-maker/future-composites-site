@@ -24,8 +24,12 @@
       if (parts.length > 1) { const last = parts.pop(); h1.innerHTML = parts.join('') + ' <span class="grad">' + last.trim() + '</span>'; }
       else { const w = t.split(' '); const last = w.pop(); h1.innerHTML = w.join(' ') + ' <span class="grad">' + last + '</span>'; }
     }
+    const hm = hero.querySelector('.fc-hero-media img');
+    const fallback = { 'materials.html': 'images/stock-fabric-rolls.jpg', 'faq.html': 'images/stock-layup-worker.jpg', 'shop-info.html': 'images/stock-glass-fabric-rolls.jpg' }[location.pathname.split('/').pop()];
+    const src = hm ? hm.getAttribute('src') : fallback;
+    if (src) { const bg = document.createElement('div'); bg.className = 'herophoto'; bg.setAttribute('aria-hidden', 'true'); bg.style.backgroundImage = 'url(' + src + ')'; hero.prepend(bg); hero.classList.add('has-photo'); }
     const c = document.createElement('canvas'); c.className = 'hexbg'; c.setAttribute('aria-hidden', 'true');
-    hero.prepend(c);
+    const ph = hero.querySelector('.herophoto'); if (ph) ph.after(c); else hero.prepend(c);
     const x = c.getContext('2d'); let W, H, cells = [], m = { x: -999, y: -999 }, t = 0; const R = 34;
     function build(){ const d = Math.min(devicePixelRatio || 1, 2); W = c.clientWidth; H = c.clientHeight; c.width = W*d; c.height = H*d; x.setTransform(d,0,0,d,0,0);
       cells = []; const w = Math.sqrt(3)*R, h = 1.5*R; for (let r=-1; r*h < H+R; r++) for (let q=-1; q*w < W+w; q++) cells.push({ x: q*w + (r&1 ? w/2 : 0), y: r*h, g: 0 }); }
