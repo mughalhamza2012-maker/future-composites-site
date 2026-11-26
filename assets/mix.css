@@ -150,9 +150,11 @@ a{color:var(--teal)}
 .fc-note{font-size:14px!important;color:var(--inkmuted)!important;font-style:italic;margin-top:24px!important}
 
 /* Photo backdrop behind each hero (taken from the hero photo), darkened so text stays readable */
-.fc-hero .herophoto{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;transform:scale(1.06);filter:saturate(.9);animation:kb 24s ease-in-out infinite alternate}
-.fc-hero .herophoto::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,20,25,.94) 0%,rgba(10,20,25,.82) 45%,rgba(10,20,25,.55) 100%)}
-.fc-hero.has-photo .hexbg{opacity:.55}
+.fc-hero .herophoto{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;filter:saturate(.85)}
+.fc-hero .herophoto::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,20,25,.96) 0%,rgba(10,20,25,.9) 45%,rgba(10,20,25,.72) 100%)}
+.fc-hero.has-photo .hexbg{opacity:1}
 @keyframes kb{to{transform:scale(1.14) translate(-1.5%,-1%)}}
 @media (prefers-reduced-motion:reduce){.fc-hero .herophoto{animation:none}}
 @media(max-width:781px){.fc-hero .herophoto::after{background:rgba(10,20,25,.84)}}
+/* Honeycomb and photo backdrop cover the full hero width, like the first Carbon demo */
+.fc-hero>.hexbg,.fc-hero>.herophoto{max-width:none!important;width:100%!important;height:100%!important;margin:0!important;inset:0!important}
