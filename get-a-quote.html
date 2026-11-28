@@ -174,7 +174,6 @@ body { overflow-x: hidden; }
 <div class="wp-block-buttons">
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="get-a-quote.html">Get a quote</a></div>
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://wa.me/923485940170">Talk to an engineer on WhatsApp</a></div>
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="mailto:hamza@future-composites.com?subject=Quote%20request&amp;body=Part%20or%20product%3A%0AMaterial%3A%0AQuantity%3A%0ADeadline%3A%0ACountry%20for%20delivery%3A%0A%0A(Attach%20your%20drawing%2C%20sketch%20or%20photos.)">Email your drawing</a></div>
 </div>
 </div>
 <div class="wp-block-column is-vertically-aligned-center fc-hero-media" style="flex-basis:42%">
@@ -183,8 +182,37 @@ body { overflow-x: hidden; }
 </div>
 </div>
 <div class="wp-block-group alignfull fc-section fc-form">
-<p class="fc-ph" style="aspect-ratio:auto;padding:40px">Quote form: name, company, email, WhatsApp, country, service needed, quantity, message and drawing upload</p>
-<p style="text-align:center">Until the form is live, <a href="mailto:hamza@future-composites.com?subject=Quote%20request&amp;body=Part%20or%20product%3A%0AMaterial%3A%0AQuantity%3A%0ADeadline%3A%0ACountry%20for%20delivery%3A%0A%0A(Attach%20your%20drawing%2C%20sketch%20or%20photos.)">email your inquiry</a> or <a href="https://wa.me/923485940170">send it on WhatsApp</a>.</p>
+<h2 class="wp-block-heading">Tell us about your part</h2>
+<form class="qf" action="https://formsubmit.co/hamza@future-composites.com" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="_subject" value="New quote request from the website">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://mughalhamza2012-maker.github.io/future-composites-site/thanks.html">
+<input type="text" name="_honey" class="qf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="qf-grid">
+<label>Your name *<input id="qf-name" name="Name" required autocomplete="name"></label>
+<label>Company<input id="qf-company" name="Company" autocomplete="organization"></label>
+<label>Email *<input id="qf-email" type="email" name="email" required autocomplete="email"></label>
+<label>WhatsApp or phone<input id="qf-phone" type="tel" name="WhatsApp" autocomplete="tel" placeholder="+92 …"></label>
+<label>Country *<input id="qf-country" name="Country" required autocomplete="country-name"></label>
+<label>What do you need? *<select id="qf-service" name="Service" required>
+<option value="">Choose one</option>
+<option>Product development (design and engineering)</option>
+<option>Composite parts manufacturing</option>
+<option>Molds and master patterns</option>
+<option>CNC machining (metal or plastic parts)</option>
+<option>Composite materials (fabric, resin, foam)</option>
+<option>Not sure yet</option>
+</select></label>
+<label>Material, if known<input id="qf-material" name="Material" placeholder="Carbon, glass, aluminum…"></label>
+<label>Quantity<input id="qf-qty" name="Quantity" placeholder="e.g. 1 prototype, then 200 a year"></label>
+<label>When do you need it?<input id="qf-date" name="Deadline" placeholder="e.g. end of January"></label>
+<label>Drawing, sketch or photos<input id="qf-file" type="file" name="attachment" accept=".pdf,.step,.stp,.iges,.igs,.stl,.dwg,.dxf,.jpg,.jpeg,.png,.zip"><small>One file, up to 10 MB. PDF, STEP, IGES, STL, DWG, JPG or ZIP.</small></label>
+</div>
+<label class="qf-wide">Describe your part or idea *<textarea id="qf-msg" name="Message" rows="6" required placeholder="What it is, what it must do, size, loads, finish, and anything else we should know."></textarea></label>
+<label class="qf-check"><input id="qf-nda" type="checkbox" name="NDA requested" value="Yes"> Please send an NDA before I share detailed files</label>
+<button class="qf-send" type="submit">Send quote request</button>
+<p class="qf-note">An engineer replies within 2 working days. Large files? Send the form, then reply to our email with the rest.</p>
+</form>
 </div>
 <div class="wp-block-group alignfull fc-section">
 <h2 class="wp-block-heading">After you send your inquiry</h2>

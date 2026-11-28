@@ -158,3 +158,20 @@ a{color:var(--teal)}
 @media(max-width:781px){.fc-hero .herophoto::after{background:rgba(10,20,25,.84)}}
 /* Honeycomb and photo backdrop cover the full hero width, like the first Carbon demo */
 .fc-hero>.hexbg,.fc-hero>.herophoto{max-width:none!important;width:100%!important;height:100%!important;margin:0!important;inset:0!important}
+
+/* Quote form (Get a Quote) */
+.fc-form h2{margin-bottom:18px}
+.qf{max-width:900px;background:#fff;border:1.5px solid var(--ink);padding:28px;display:grid;gap:18px}
+.qf-grid{display:grid;align-items:start;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 22px}
+.qf label{display:grid;gap:6px;font:600 15px var(--head);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.qf input,.qf select,.qf textarea{font:400 17px var(--body);text-transform:none;letter-spacing:0;color:var(--ink);background:var(--paper);border:1px solid rgba(15,27,33,.28);border-radius:4px;padding:10px 12px;width:100%;box-sizing:border-box;min-width:0}
+.qf input:focus,.qf select:focus,.qf textarea:focus{outline:2px solid var(--cyan);outline-offset:1px;background:#fff}
+.qf input[type=file]{padding:8px;background:#fff}
+.qf small{font:400 13px var(--body);text-transform:none;letter-spacing:0;color:var(--inkmuted)}
+.qf .qf-check{display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font:400 16px var(--body)}
+.qf .qf-check input{width:20px;height:20px}
+.qf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.qf-send{justify-self:start;background:var(--orange);color:#1b1306;border:0;border-radius:999px;padding:14px 30px;font:700 16px var(--head);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 26px rgba(247,148,30,.35);transition:transform .2s}
+.qf-send:hover{transform:translateY(-2px)}
+.qf-note{margin:0;color:var(--inkmuted);font-size:15px}
+@media(max-width:600px){.qf{padding:18px}.qf-send{justify-self:stretch}}
