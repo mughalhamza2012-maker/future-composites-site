@@ -1,0 +1,38 @@
+{
+ "guide-plain-vs-twill-weave": [
+  "Plain Weave vs Twill Weave Carbon Fabric: When Each Wins \u00b7 Future Composites",
+  "Plain weave is stable and easy to cut; twill drapes better over curves and has the classic carbon look. How to choose for your part."
+ ],
+ "guide-3k-6k-12k-carbon-tow": [
+  "3K, 6K, 12K and Spread-Tow Carbon Fiber: What the Numbers Mean \u00b7 Future Composites",
+  "The K number is how many thousand filaments are in each tow. What it changes in weight, look, drape and cost, and how to choose."
+ ],
+ "guide-vacuum-infusion-checks": [
+  "Vacuum Infusion: Five Checks Before You Start \u00b7 Future Composites",
+  "Most infusion failures are set before the resin moves. Five checks on vacuum, flow, resin, temperature and the plan that save parts."
+ ],
+ "guide-pmi-vs-pu-foam-core": [
+  "PMI Foam vs PU Foam Cores for Sandwich Panels \u00b7 Future Composites",
+  "PMI foam handles heat and pressure for prepreg and structural parts; PU foam is low cost for doors and panels. How to pick a core."
+ ],
+ "guide-prepreg-storage-shipping": [
+  "How to Store and Ship Prepreg Without Losing Shelf Life \u00b7 Future Composites",
+  "Prepreg keeps curing slowly at room temperature. How freezer storage, out-life tracking, thawing and cold shipping protect it."
+ ],
+ "guide-cnc-tolerances": [
+  "CNC Tolerances Explained: What Tight Tolerances Cost You \u00b7 Future Composites",
+  "Tight tolerances cost machine time and inspection. Where to ask for \u00b10.01 mm, where a general tolerance is fine, and how to mark your drawing."
+ ],
+ "guide-ply-wrinkles-curved-molds": [
+  "Why Carbon Fiber Plies Wrinkle on Curved Molds \u00b7 Future Composites",
+  "Fabric cannot stretch over a double curve, so it folds. How cutting, darts, fabric choice and debulking prevent wrinkles in composite parts."
+ ],
+ "guide-warped-composite-panels": [
+  "Why Flat Composite Panels Warp, and How to Stop It \u00b7 Future Composites",
+  "Warping comes from an unbalanced layup, uneven cure or releasing too early. The rules for symmetric, balanced laminates that stay flat."
+ ],
+ "guide-tg-service-temperature": [
+  "Tg Is Not Your Maximum Service Temperature \u00b7 Future Composites",
+  "Glass transition temperature (Tg) is where a resin softens. Why your part needs a safety margin below Tg, and how cure and moisture change it."
+ ]
+}
