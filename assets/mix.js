@@ -88,7 +88,7 @@
 
   /* Footer */
   const f = document.createElement('footer'); f.className = 'site-foot';
-  f.innerHTML = 'Future Composites (Pvt.) Ltd. · Islamabad · <a href="get-a-quote.html">Get a quote</a> · <a href="mailto:hamza@future-composites.com?subject=Quote%20request">hamza@future-composites.com</a> · <a href="https://wa.me/923485940170">WhatsApp</a>';
+  f.innerHTML = 'Future Composites (Pvt.) Ltd. · Islamabad · <a href="get-a-quote.html">Get a quote</a> · <a href="mailto:hamza@future-composites.com?subject=Quote%20request">hamza@future-composites.com</a> · <a href="https://wa.me/923485940170">WhatsApp</a><br><a href="carbon-fiber-molds.html">Carbon fiber molds</a> · <a href="custom-carbon-fiber-parts.html">Custom carbon fiber parts</a> · <a href="cnc-master-patterns.html">CNC master patterns</a> · <a href="knowledge.html">Guides</a>';
   document.body.appendChild(f);
 
   /* Reveal on scroll */
