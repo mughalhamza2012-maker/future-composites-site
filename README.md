@@ -1,6 +1,6 @@
-# Future Composites website (test copy)
+# Future Composites website
 
-Static test copy of the new Future Composites website. It is **not** connected to future-composites.com and is hidden from search engines (noindex).
+The Future Composites website, served by GitHub Pages at www.future-composites.com (see `CNAME`). The 11 main pages are open to search engines; `demo/`, `home.html` and `thanks.html` stay hidden (noindex and `robots.txt`). The quote form on `get-a-quote.html` sends requests to Hamza's email through FormSubmit.
 
 - Pages: one `.html` file per page; `index.html` is the home page.
 - Photos: `images/`

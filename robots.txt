@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /demo/
+Disallow: /home.html
+Disallow: /thanks.html
+Sitemap: https://www.future-composites.com/sitemap.xml
