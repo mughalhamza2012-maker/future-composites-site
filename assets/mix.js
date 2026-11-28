@@ -26,7 +26,7 @@
     }
     const hm = hero.querySelector('.fc-hero-media img');
     const fallback = { 'materials.html': 'images/stock-fabric-rolls.jpg', 'faq.html': 'images/stock-layup-worker.jpg', 'shop-info.html': 'images/stock-glass-fabric-rolls.jpg' }[location.pathname.split('/').pop()];
-    const src = hm ? hm.getAttribute('src') : fallback;
+    const src = hm && !hm.closest('.fc-diagram') ? hm.getAttribute('src') : (fallback || 'images/stock-factory-floor.jpg');
     if (src) { const bg = document.createElement('div'); bg.className = 'herophoto'; bg.setAttribute('aria-hidden', 'true'); bg.style.backgroundImage = 'url(' + src + ')'; hero.prepend(bg); hero.classList.add('has-photo'); }
     const c = document.createElement('canvas'); c.className = 'hexbg'; c.setAttribute('aria-hidden', 'true');
     const ph = hero.querySelector('.herophoto'); if (ph) ph.after(c); else hero.prepend(c);
@@ -88,7 +88,7 @@
 
   /* Footer */
   const f = document.createElement('footer'); f.className = 'site-foot';
-  f.innerHTML = 'Future Composites (Pvt.) Ltd. · Islamabad · <a href="get-a-quote.html">Get a quote</a> · <a href="https://wa.me/923485940170">WhatsApp</a>';
+  f.innerHTML = 'Future Composites (Pvt.) Ltd. · Islamabad · <a href="get-a-quote.html">Get a quote</a> · <a href="mailto:hamza@future-composites.com?subject=Quote%20request">hamza@future-composites.com</a> · <a href="https://wa.me/923485940170">WhatsApp</a>';
   document.body.appendChild(f);
 
   /* Reveal on scroll */
